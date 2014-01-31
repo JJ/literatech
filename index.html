@@ -184,13 +184,37 @@ In the browser and in the server <span class='smaller'>and
 	    <div class='step' data-x='1000' data-y='-1000'>
 	     <h2>But who's the king of the hill</h2>
 
-<img src='img/unfit.jpg' alt='Originally by 14517351_a0efb34914_b_d.jpg'>
+	     <img src='img/unfit.jpg' alt='Originally by 14517351_a0efb34914_b_d.jpg'>
 
 	     <h3>Every individual is <em>evaluated</em> and assigned a <strong>fitness</strong>. Only the fittest survive</h3>
 
-	     <p>Unfit for JavaScript. Will not survive even if the Red Bull dose is increased</p>
+	     <p class='image'>Unfit for JavaScript. Will not survive even if the Red Bull dose is increased.</p>
 	    </div>
 
+	    <div class='step' data-x='0' data-y='-1000'>
+	     <h2>To every one its own</h2>
+
+	  <div id='gen1' class='left'></div>
+	  <form id='eval' >
+	    <input type="submit" value="Fit?" class='presshere' style='float:0 auto'/>
+	  </form>
+	  <div id='gen2' class='right'></div>
+	
+	  <script type='text/javascript' src='js/eval.js'> </script>
+	    </div>  
+
+	    <div class='step' data-x='0' data-y='-2000'>
+	      <h2>Only the fittest reproduce and survive</h2>
+	      
+	      <div id='repro1' class='left'></div>
+	      <form id='repro' >
+		<input type="submit" value="Replicate!" class='presshere' style='float:0 auto'/>
+	      </form>
+	      <div id='repro2' class='right'></div>
+	      
+	      <script type='text/javascript' src='js/reproduce.js'> </script>
+	    </div>  
+	    
 	<div id='end' class='step' data-x='1000' data-y='-8000' >
 	  <h2>That's all</h2>
 

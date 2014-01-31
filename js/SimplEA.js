@@ -1,4 +1,13 @@
+function max_ones( chromosome ) {
+    var ones=0;
+    for ( var i=0; i < chromosome.length; i++ ){ 
+	ones += parseInt(chromosome.charAt(i));
+    }
+    return ones;
+}
+
 function get_pool_roulette_wheel (population, need ) {
+    alert('need' + need );
     var total_fitness = 0;
     for ( var i in population ) {
 	total_fitness += population[i].value.fitness;
