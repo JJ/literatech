@@ -2,17 +2,24 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Creative writing and Perl</title>
+	<title>Evolutionary algorithms in JavaScript</title>
 
 	<meta name="description" content="jmpress.js is a jQuery plugin to build a website on the infinite canvas">
 	<meta name="author" content="Kyle Robinson Young @shama & Tobias Koppers @sokra Modified by @jjmerelo JJ Merelo" />
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=yes" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<!-- script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script-->
+		<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jmpress.custom.js"></script>
 	<script type="text/javascript" src="js/jquery.snippet.js"></script> <!-- highlight environment -->
-	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>	<!-- Jquery UI-->
+	<script type="text/javascript"
+	src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<!-- Jquery UI-->
+
+	<!-- my own stuff -->
+	<script type="text/javascript" src="js/SimplEA.js"></script>
 
 	<link href="css/ea-js.css" rel="stylesheet" type="text/css" />
 	<link rel='stylesheet' type ="text/css" href = "css/highlight.css" title='normal'>
@@ -82,7 +89,7 @@ In the browser and in the server <span class='smaller'>and
 	  <img src='img/leaves.jpg' alt='OpenTea leaves' >
 	</div>
 
-<div class='step' data-x='9000' data-z='-1000'>
+<div class='step' data-x='9000' data-y='-1000'>
 	  <h2>Evolution works by random changes and natural selection</h2>
 	  <img src='img/finches.jpg' alt='Darwin's finches' >
 	  <p class='image'>Image
@@ -90,7 +97,7 @@ In the browser and in the server <span class='smaller'>and
 	  Zimmerman, taken from Darwin's book</a></p>
 	</div>
 
-<div class='step' data-x='8000' data-z='-1000'>
+<div class='step' data-x='8000' data-y='-1000'>
 	  <h2>And we can use that as an inspiration to solve search and optimization problems</h2>
 	  <img src='img/finches.jpg' alt='Darwin's finches' >
 	  <p class='image'>Image
@@ -98,7 +105,7 @@ In the browser and in the server <span class='smaller'>and
 	  Zimmerman, taken from Darwin's book</a></p>
 	</div>
 
-<div class='step' data-x='7000' data-z='-1000'>
+<div class='step' data-x='7000' data-y='-1000'>
 	  <h2>Like finding the best bridge structure</h2>
 	  <img src='img/bridge.jpg' alt='Bridge by Johannes Bader' style='top:350px'>
 	  <p class='image'>Image
@@ -106,7 +113,33 @@ In the browser and in the server <span class='smaller'>and
 	  Bader, from his PhD Thesis</a></p>
 	</div>
 
-	<div id='end' class='step' data-x='1000' data-z='-8000' >
+<div class='step' data-x='6000' data-y='-1000'>
+	  <h2>First key is random variation: use a population of
+	  possible solutions</h2>
+
+<img src='img/population.jpg' alt='Population Johannes Bader'>
+	  <p class='image'>Image
+	  by <a href='http://www.flickr.com/photos/mattkowal/5179823067/'>Matt Kowal</a></p>
+	</div>
+
+<div class='step' data-x='5000' data-y='-1000'>
+	  <h2>Random mutation introduces more variations</h2>
+
+	  <div id='chromosome'
+	  class='chrom'>11111111000000001111111100000000</div>
+	  <form id='mutation'>
+	      <input type="submit" value="Evolve!"/>
+	  </form>
+	  <div id='new_chromosome' class='chrom'></div>
+	  <script type='text/javascript'>
+	    $("#mutation").submit(function(){
+	    var new_guy = mutate($("#chromosome").text());
+	    $("#new_chromosome").text(new_guy);
+	    return false;
+	    });
+	  </script>
+
+	<div id='end' class='step' data-x='1000' data-y='-8000' >
 	  <h2>That's all</h2>
 
 	  <h2>Questions?</h2>

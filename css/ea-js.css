@@ -227,6 +227,18 @@ p.image {
           padding: 5px;
  }
 
+.chrom { 
+       font-family: Lekton, Courier, Courier New, monospace;
+       font-size: 1.2em;
+       background-color: #222;
+       color: #ffcc00;
+       font-weight:bold;
+       margin: 10px;
+       padding: 10px;
+       -moz-border-radius: 10px;
+       border-radius: 10px;
+}
+
 code { 
        font-family: Lekton, Courier, Courier New, monospace;
        font-size: 1.1em;
