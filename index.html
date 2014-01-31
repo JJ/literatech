@@ -182,7 +182,7 @@ In the browser and in the server <span class='smaller'>and
 	   </div>
 
 	    <div class='step' data-x='1000' data-y='-1000'>
-	     <h2>But who's the king of the hill</h2>
+	     <h2>But who's the king of the hill?</h2>
 
 	     <img src='img/unfit.jpg' alt='Originally by 14517351_a0efb34914_b_d.jpg'>
 
@@ -192,25 +192,36 @@ In the browser and in the server <span class='smaller'>and
 	    </div>
 
 	    <div class='step' data-x='0' data-y='-1000'>
-	     <h2>To every one its own</h2>
-
-	  <div id='gen1' class='left'></div>
-	  <form id='eval' >
-	    <input type="submit" value="Fit?" class='presshere' style='float:0 auto'/>
-	  </form>
-	  <div id='gen2' class='right'></div>
-	
+	      <h2>To every one its own</h2>
+	      
+	      <table style='width:100%'><tr>
+		  <td id='gen1' class='left'></td>
+		  <td>
+		    <form id='eval' >
+		      <input type="submit" value="Fit?" class='presshere' style='float:none:overflow:hidden'/>
+		    </form>
+		  </td>
+	      <td id='gen2' class='right'></td>
+		</tr>
+	      </table>
+	      
 	  <script type='text/javascript' src='js/eval.js'> </script>
-	    </div>  
+	    </div>
 
 	    <div class='step' data-x='0' data-y='-2000'>
-	      <h2>Only the fittest reproduce and survive</h2>
+	      <h2>Only the fittest leave a mark</h2>
 	      
-	      <div id='repro1' class='left'></div>
-	      <form id='repro' >
-		<input type="submit" value="Replicate!" class='presshere' style='float:0 auto'/>
-	      </form>
-	      <div id='repro2' class='right'></div>
+	      <table  style='width:100%'>
+		<tr>
+		  <td id='repro1' class='left'></td>
+		  <td>
+		    <form id='repro' >
+		      <input type="submit" value="Replicate!" class='presshere' style='float:none'/>
+		    </form>
+		  </td>
+		  <td id='repro2' class='right'></td>
+		</tr>
+	      </table>
 	      
 	      <script type='text/javascript' src='js/reproduce.js'> </script>
 	    </div>  

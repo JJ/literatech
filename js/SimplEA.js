@@ -7,14 +7,13 @@ function max_ones( chromosome ) {
 }
 
 function get_pool_roulette_wheel (population, need ) {
-    alert('need' + need );
     var total_fitness = 0;
     for ( var i in population ) {
-	total_fitness += population[i].value.fitness;
+	total_fitness += population[i].fitness;
     }
     var wheel = new Array;
     for ( var i in population ) {
-	wheel[i]  = population[i].value.fitness/total_fitness;
+	wheel[i]  = population[i].fitness/total_fitness;
     }
     var slots = spin( wheel, population.length );
     var pool = new Array;

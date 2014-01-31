@@ -13,7 +13,7 @@ for ( var i = 0; i < 10; i++ ) {
 $("#repro").submit(function(){
     var new_ones = get_pool_roulette_wheel( chromosomes, chromosomes.length);
     for ( var j in new_ones) {
-	$('#repro2').append("<p>"+new_ones[j]+"</p>");
+	$('#repro2').append("<p>"+new_ones[j].str+"</p>");
     }
     return false;
 });
