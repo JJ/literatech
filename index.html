@@ -138,7 +138,41 @@ In the browser and in the server <span class='smaller'>and
 	    return false;
 	    });
 	  </script>
+</div>
+	  <div class='step' data-x='4000' data-y='-1000'>
+	    <h2>But that's a mutie!</h2>
 
+	    <img src='img/mutie.jpg' alt='Mutant dog, check out origin at 374791126_f18089a883_b.jpg'>
+
+	  </div>
+
+	   <div class='step' data-x='3000' data-y='-1000'>
+	    <h2>Population-based mutation is not much better than random search</h2>
+
+	    <h3>It takes you nowhere, and does so very slowly</h3>
+
+	  </div>
+
+	   <div class='step' data-x='3000' data-y='-1000'>
+	     <h2>Is sex still on the table?</h2>
+
+	  <div id='parent1'
+	       class='chrom'>11111111000000001111111100000000</div>
+	  <div id='parent2'
+	       class='chrom'>00000000111111110000000011111111</div>
+	  <form id='crossover' >
+	      <input type="submit" value="Do it!" class='presshere'/>
+	  </form>
+	  <div id='offspring' class='chrom'></div>
+	  <script type='text/javascript'>
+	    $("#crossover").submit(function(){
+	    var new_guy = crossover($("#parent1").text(),$("#parent2").text());
+	    $("#offspring").text(new_guy);
+	    return false;
+	    });
+	  </script>
+
+	  </div>
 	<div id='end' class='step' data-x='1000' data-y='-8000' >
 	  <h2>That's all</h2>
 

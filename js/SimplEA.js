@@ -49,8 +49,8 @@ function produce_offspring( pool, offspring_size) {
 
 // applied over the first chromosome
 function crossover( guy_1, guy_2 ) {
-    var first_chromosome = guy_1.value._id;
-    var second_chromosome = guy_2.value._id;
+    var first_chromosome = guy_1;
+    var second_chromosome = guy_2;
     var this_len = first_chromosome.length;
     var point_1 = Math.floor( Math.random()* this_len);
     var len = 1+Math.floor( Math.random()*(this_len - point_1 - 1));
