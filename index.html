@@ -14,8 +14,7 @@
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jmpress.custom.js"></script>
 	<script type="text/javascript" src="js/jquery.snippet.js"></script> <!-- highlight environment -->
-	<script type="text/javascript"
-	src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<!-- Jquery UI-->
 
 	<!-- my own stuff -->
@@ -26,6 +25,9 @@
 	<link href='http://fonts.googleapis.com/css?family=Montserrat|Lato|Telex|Lekton' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/jquery.snippet.css" />
 
+	<!-- highlight -->
+	<link rel="stylesheet" href="css/dark.css">
+	<script src="js/highlight.pack.js"></script>
 </head>
 <body>
 
@@ -225,6 +227,32 @@ In the browser and in the server <span class='smaller'>and
 	      
 	      <script type='text/javascript' src='js/reproduce.js'> </script>
 	    </div>  
+
+	    <div class='step' data-x='1000' data-y='-2000'>
+	      <h2>Let's see how all this plays together</h2>
+	    
+	      <h3>Check it out at <a href='http://jj.github.io/nodeo/app/browser/chart.html'>http://goo.gl/yXpcKG</a></h3>
+
+	    </div>
+
+	    <div class='step' data-x='1000' data-y='-2000'>
+	      <h2>Evolution is not for ever</h2>
+
+<pre><code>(function do_ea() {
+	eo.generation();
+	generation_count++;
+	if ( (generation_count % 100 === 0) ) {
+           do_periodic_stuff()
+	}
+	if( (eo.fitness_of[eo.population[0]] < traps*conf.fitness.b ) 
+	    && ( generation_count*conf.population_size < conf.max_evaluations)) {
+	    setTimeout(do_ea, 5);
+	} else {
+	    we_are_done()
+	}
+    })(); 
+</code></pre>
+	    </div>
 	    
 	<div id='end' class='step' data-x='1000' data-y='-8000' >
 	  <h2>That's all</h2>
@@ -253,6 +281,8 @@ $(function() {
         $("#html1").snippet("html",{style:"navy",
                                           transparent:false,
                                           showNum:true});
+
+        hljs.initHighlightingOnLoad();
 });
 </script>
 
