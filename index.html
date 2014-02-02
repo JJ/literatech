@@ -236,7 +236,7 @@ In the browser and in the server <span class='smaller'>and
 	    </div>
 
 	    <div class='step' data-x='1000' data-y='-2000'>
-	      <h2>Evolution is not for ever</h2>
+	      <h2>Evolution is not forever</h2>
 
 <pre><code>(function do_ea() {
 	eo.generation();
@@ -248,10 +248,9 @@ In the browser and in the server <span class='smaller'>and
 	    && ( generation_count*conf.population_size < conf.max_evaluations)) {
 	    setTimeout(do_ea, 5);
 	} else {
-	    we_are_done()
+	    we_are_done();
 	}
-    })(); 
-</code></pre>
+    })();</code></pre>
 	    </div>
 
  <div class='step' data-x='2000' data-y='-2000'>
@@ -307,27 +306,124 @@ In the browser and in the server <span class='smaller'>and
 	       <p class='image'>Available at <a href='http://github.com/JJ/nodeo'>http://github.com/JJ/nodeo (+ experimental data)</a></p>
 	     </div>
 
-	     
-	     <div class='step' data-x='8000' data-y='-2000'>
-	       <h2>Putting evolutionary algorithms to REST</h2>
+	     <div class='step' data-x='7000' data-y='-3000'>
+	       <h2>And we also have MOOTools</h2>
 
+	       <h3><a href='https://github.com/CANUBE/jsEO'>jsEO is an object-oriented implementation of an evolutionary algorithm using MooTools</a></h3>
+	     </div>
+	     
+	     <div class='step' data-x='6000' data-y='-3000'><pre><code>var jsEOGA = new Class({
+    Extends: jsEOAlgorithm, /** more stuff after this **/
+    privateRun: function(_fitFn, _numGenerations, _showing) {
+        var popSize = this.population.length();
+        this.population.sort();
+        for (var j = 0; (j < _numGenerations); ++j) {
+            var newPop = this.indivSelector.operate(this.population);
+            for (var i = 0; i < newPop.length(); ++i) {
+                var tmpPop = new jsEOPopulation();
+                tmpPop.add(newPop.getAt(i)).join(newPop);
+                tmpPop = this.operSelector.
+                        operate().
+                        operate(tmpPop).
+                        evaluate(_fitFn);
+                newPop.setAt(i, tmpPop.getAt(0));
+            }
+            this.population.join(newPop).sort().crop(popSize);
+            if (typeof this.opSend != 'undefined' && this.opSend != null) {
+                this.opSend.operate(this.population);
+            }
+        } //for numGenerations
+    },
+    run: function() {
+        this.privateRun();
+    }
+});</code></pre>
+				<p class='image'>Code @<a href='https://github.com/CANUBE/jsEO/blob/master/js/libs/jsEO/core/algorithms/jsEOGA.js'>http://git.io/jseo</a> by @vrivas.</p>
+				</div>
+
+	     
+	     <div class='step' data-x='5000' data-y='-3000'>
+	       <h2>But we need to put evolutionary algorithms to REST</h2>
+
+<pre><code>
+do {
+  eo.generation();
+  generation_count++;
+} while ( eo.not_finished() && eo.current_run());
+if ( conf.peers ) {
+    var peer_url = conf.peers[ Math.floor(Math.random()*conf.peers.length )];
+	rest.get( peer_url+"/best" ).on('success', function(result) {
+           eo.incorporate( result.chromosome );
+      });
+    }
+    total_generations += generation_count;
+    if ( eo.way_to_go()  ) {
+	setImmediate( generations );
+    } else {
+        eo.we_re_done();
+	process.exit();
+    }</code></pre>
 	     </div>
 
+	     <div class='step' data-x='4000' data-y='-3000'>
+	       <h2>I want to be just a client</h2>
 
-	     <div class='step' data-x='9000' data-y='-2000'>
+<pre><code>    generation_count++;
+    eo.generation();
+    if ( generation_count % conf.generation_run === 0 ) {
+	rest.put( pool_url+"/one/" + eo.population[0])
+	    .on('complete', function(result) {
+		    if ( result instanceof Error ) {log_errer(); } 
+		});
+	rest.get( pool_url+"/random" )
+	    .on('complete', function(result) {
+		    if ( result instanceof Error ) { log_error(); } 
+                    else {
+			if ( result.chromosome) {
+			    eo.incorporate( result.chromosome );
+			}
+		    }
+		});</code></pre>
+	     </div>
+
+	     <div class='step' data-x='3000' data-y='-3000'>
+	       <h2>Better a peer or a client?</h2>
+
+<img src='img/par-pool-hits-pop.png' alt='peer of a client' />
+
+	       <p class='image'>>Submitted to GECCO'2014 conference; draft available under request.</p>
+
+
+	     <div class='step' data-x='3000' data-y='-3000'>
 	       <h2>And back to the browser</h2>
 	       
-	       <h3>Using browserify</h3>
+	       <h3>Using browserify and with help from #browserify @irc.freenode.net</h3>
+
+	       <ul><li>Actually used in this persentation, in the live demo.</li>
+		 <li>Same code on the client and on the server oh my!</li>
+	       </ul>
 	     </div>
 
+	      <div class='step' data-x='2000' data-y='-3000'>
+		<h2>Fulfilling promises</h2>
+
+		<h3>What we would like to do from now on</h3>
+
+		<ul><li>Paper <span class='smaller'>accepted at EvoStar 2014, submitted to GECCO, preparing for PPSN</span><span class='smallest'> (evolutionary computation conferences you probably don't know and more probably don't care about)</span>.</li>
+		  <li>Using websockets for persistent client-server, broadcast and algorithm monitoring.</li>
+		  <li>Volunteer computing setup: added security, throttling, prevention of cheathing.</li>
+		  <li>Re-thinking the underlying evolutionary algorithm using <em>promises</em></li>
+		  <li>Continue developing <code>nodeo</code>.</li>
+		</ul>
+	      </div>
 	     
-	<div id='end' class='step' data-x='1000' data-y='-8000' >
+	<div id='end' class='step' data-x='3000' data-y='-8000' >
 	  <h2>That's all</h2>
 
 	  <h2>Questions?</h2>
 	  
 	  <h3>Check out <a href='http://musesproject.eu'>MUSES, mobile
-	      corporate security</a>- Follow me at <a href='http://twitter.com/jjmerelo'>@jjmerelo</a> or
+	      corporate security</a>- Follow our research at <a href='http://twitter.com/jjmerelo'>@geneura</a> (or look us up for European H2020 projects) or
 	    buy my novels at  <a href='http://www.amazon.som/s/?_encoding=UTF8&camp=3626&creative=24822&field-author=Juan%20Juli%C3%A1n%20Merelo%20Guerv%C3%B3s&linkCode=ur2&search-alias=digital-text&tag=atalaya-21'>Amazon</a></h3>
 	  
 	  <h2>Download this presentation from <a href='http://github.com/JJ/js-ga-fosdem'>git.io/uniajq</a></h2>
