@@ -13,6 +13,7 @@ $("#eval").submit(function(){
     for ( var j in chromosomes_ev) {
 	console.log(chromosomes_ev[j]);
 	$('#gen2').append("<p>"+chromosomes_ev[j]+"->"+max_ones(chromosomes_ev[j])+"</p>");
+//	$('#gen2').append("<p>"+ JSON.stringify( chromosomes_ev[j] : max_ones(chromosomes_ev[j]) }+"</p>");
     }
     return false;
 });
