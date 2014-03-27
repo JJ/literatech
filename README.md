@@ -1,4 +1,4 @@
-literatech-perl
+Literary engineering - presentation at transmedia seminar
 ===============
 
-Writing using Perl, talk at FOSDEM
+Text with a bit of JavaScript here and there
