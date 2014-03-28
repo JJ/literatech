@@ -163,8 +163,10 @@ h3.text {
           position: fixed;
           top: 50%;
           left: 50%;
-          margin-top: -50px;
-          margin-left: -100px;
+          background-color: #0cf;
+          background: transparent;
+          margin-top: 10px;
+          margin-left: -250px;
           font-size: 2em;
           font-family: "Montserrat", sans-serif;
           color: DarkGray;
