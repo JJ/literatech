@@ -266,6 +266,11 @@ img { width: 90%;
       top:30px;
       z-index: -1}
 
+/* Customization */
+img.captura { width: 90%;
+              position: absolute;
+              top:190px;
+              z-index: -1}
 
 .presshere {
 	-moz-box-shadow:inset 0px 1px 0px 0px #caefab;
